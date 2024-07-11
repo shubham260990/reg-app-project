@@ -12,5 +12,14 @@ steps:
   - --filename=./kubernetes-manifests/
   - --location=us-central1
   - --cluster=cluster-1
+- name: 'gcr.io/cloud-builders/kubectl'
+  args:
+      - rollout
+      - restart
+      - deployment/nginx-testing
+      - --ignore-not-found
+  env:
+      - CLOUDSDK_COMPUTE_ZONE=us-central1
+      - CLOUDSDK_CONTAINER_CLUSTER=cluster-1
 options:
   logging: CLOUD_LOGGING_ONLY
