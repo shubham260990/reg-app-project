@@ -5,5 +5,12 @@ steps:
   # push container image
 - name: "gcr.io/cloud-builders/docker"
   args: ["push", "gcr.io/$PROJECT_ID/my-test-repo/shubham"]
+  # deploy container image to GKE
+- name: "gcr.io/cloud-builders/gke-deploy"
+  args:
+  - run
+  - --filename=./kubernetes-manifests/
+  - --location=us-central1
+  - --cluster=cluster-1
 options:
   logging: CLOUD_LOGGING_ONLY
