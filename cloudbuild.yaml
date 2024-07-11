@@ -17,7 +17,6 @@ steps:
       - rollout
       - restart
       - deployment/nginx-testing
-      - --ignore-not-found
   env:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1'
       - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
